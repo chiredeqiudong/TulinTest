@@ -65,7 +65,7 @@ public class Restore {
             System.out.println(time);
             System.out.println("-------------------------------");
         }
-        System.out.println("总计:" + count + "操作记录");
+        System.out.println("总计:" + count + "条操作记录");
 
     }
 
