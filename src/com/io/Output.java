@@ -118,19 +118,18 @@ public class Output {
         catch (Exception e) {
             return new ArrayList<>();
         }
-
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    public static List<String> timeList() {
+        try (
+                ObjectInputStream ois = new ObjectInputStream(
+                        new FileInputStream("TuLin-app\\src\\Time_Information.txt"))
+        ) {
+            // 如果读取为null（第一次）---返回错误
+            return (List<String>) ois.readObject();
+        }
+        catch (Exception e) {
+            return new ArrayList<>();
+        }
+    }
 }

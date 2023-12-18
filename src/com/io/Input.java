@@ -57,4 +57,17 @@ public class Input {
         }
 
     }
+    public static void timeList(List<String> list){
+        try (
+                ObjectOutputStream oos = new ObjectOutputStream(
+                        new FileOutputStream("TuLin-app\\src\\Time_Information.txt"))
+        ){
+            oos.writeObject(list);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
 }

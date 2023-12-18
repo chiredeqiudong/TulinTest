@@ -1,7 +1,7 @@
 package com.manage;
 
 import com.io.Output;
-import com.thread.ThreadTest;
+import com.restore.Restore;
 
 import java.util.Scanner;
 
@@ -15,17 +15,20 @@ public class Test {
     public static void main(String[] args) {
         //start（）界面
         Output.imageStart();
-        //反序列化--学生--课程-成绩
+        //反序列化--学生--课程-成绩--时间信息
         AddStudentInfo.studentsList = Output.studentList();
         AddCourseInfo.courseList = Output.courseList();
         StudentScoreManage.scoreList = Output.scoreList();
+        Restore.timeList =  Output.timeList();
+
         while (true) {
             //主菜单
             System.out.println("\n\t\t*****************学生成绩管理系统******************");
             System.out.println("\t\t**               [1]:学生信息管理\t\t\t\t  **");
             System.out.println("\t\t**               [2]:课程信息管理\t\t\t\t  **");
             System.out.println("\t\t**               [3]:学生成绩管理\t\t\t\t  **");
-            System.out.println("\t\t**               [4]:退出系统   \t\t\t\t  **");
+            System.out.println("\t\t**               [4]:操作信息记录\t\t\t\t  **");
+            System.out.println("\t\t**               [5]:退出系统   \t\t\t\t  **");
             System.out.println("\t\t************************************************");
             System.out.println("\n请输入操作命令(command):");
             String command = SCANNER.next();
@@ -33,7 +36,8 @@ public class Test {
                 case "1" -> AddStudentInfo.studentInfo();
                 case "2" -> Frame.courseManage();
                 case "3" -> StudentScoreManage.studentManage();
-                case "4" -> {
+                case "4" -> Restore.showInfo();
+                case "5" -> {
                     Output.imageEnd();
                     return;
                 }

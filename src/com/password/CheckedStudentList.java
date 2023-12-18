@@ -1,12 +1,12 @@
 package com.password;
 
 import com.io.Input;
-import com.io.Output;
 import com.manage.AddStudentInfo;
-import com.manage.StudentScoreManage;
 import com.people.Student;
+import com.restore.Restore;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Iterator;
 
 import java.util.Scanner;
@@ -189,6 +189,8 @@ public class CheckedStudentList implements Serializable {
                 System.out.println("删除成功");
                 //保存信息
                 Input.studentList(AddStudentInfo.studentsList);
+                //操作记录
+                Restore.deleteInfo(LocalDateTime.now(),name + "学生的");
             }
             //是否继续
             if (!Checked.judge()) {

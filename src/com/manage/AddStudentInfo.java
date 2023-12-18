@@ -5,6 +5,7 @@ import com.io.Input;
 import com.io.Output;
 import com.password.CheckedStudentList;
 import com.people.Student;
+import com.restore.Restore;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -85,6 +86,8 @@ public class AddStudentInfo implements Serializable {
             //数据保留--io
             Input.studentList(studentsList);
             System.out.println("学生信息添加成功");
+            //操作记录
+            Restore.addInfo(time,student.getName()+"学生的");
             //继续确认
             if (!Checked.judge()) {
                 return;
@@ -129,6 +132,8 @@ public class AddStudentInfo implements Serializable {
         //io流实时保存
         Input.studentList(studentsList);
         System.out.println("操作成功!");
+        //数据记录
+        Restore.polishInfo(endPolishTime,student.getName()+"学生的");
     }
 
     /**

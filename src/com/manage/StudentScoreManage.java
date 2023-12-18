@@ -6,8 +6,10 @@ import com.io.Output;
 import com.password.CheckScoreList;
 import com.password.Checked;
 import com.people.Score;
+import com.restore.Restore;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -85,6 +87,8 @@ public class StudentScoreManage implements Serializable {
                 //io流保存--序列化
                 Input.scoreList(scoreList);
                 System.out.println("添加成功!");
+                //操作记录
+                Restore.addInfo(LocalDateTime.now(), "[学号]:"+score.getStudentId()+",[课程号]:" + score.getCourseId() + ",学生成绩" );
                 break;
             }
             System.out.println("\033[31;3m输入有误(可能重复输入)！请重新输入！\033[0m");
@@ -114,6 +118,8 @@ public class StudentScoreManage implements Serializable {
                 rank(score);
                 //保存
                 Input.scoreList(scoreList);
+                //操作记录
+                Restore.polishInfo(LocalDateTime.now(),"[学号]:" + score.getStudentId() + ",学生成绩");
                 break;
             }
             System.out.println("\033[31;3m输入有误！请重新输入！\033[0m");
@@ -181,6 +187,8 @@ public class StudentScoreManage implements Serializable {
             System.out.println("删除成功！！！");
             //保存
             Input.scoreList(scoreList);
+            //操作记录
+            Restore.deleteInfo(LocalDateTime.now(),"[学号]:" + id + ",学生成绩");
             return;
         }
         System.out.println("删除失败！！！");

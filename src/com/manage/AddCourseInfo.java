@@ -5,8 +5,10 @@ import com.io.Input;
 import com.password.CheckCourseList;
 import com.password.Checked;
 import com.people.Course;
+import com.restore.Restore;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -45,6 +47,8 @@ public class AddCourseInfo implements Serializable {
             Input.courseList(courseList);
             //是否继续添加
             System.out.println("添加成功!");
+            //操作记录
+            Restore.addInfo(LocalDateTime.now(),course.getName() + "课程");
             if (!Checked.judge()) {
                 return;
             }
@@ -88,6 +92,8 @@ public class AddCourseInfo implements Serializable {
         //保存到io流
         Input.courseList(courseList);
         System.out.println("修改成功！");
+        //操作记录
+        Restore.polishInfo(LocalDateTime.now(),course.getName() + "课程");
     }
 
     /**
@@ -143,6 +149,8 @@ public class AddCourseInfo implements Serializable {
             }
             else {
                 System.out.println("删除成功！");
+                //操作记录
+                Restore.deleteInfo(LocalDateTime.now(),"课程号:" + id + ",课程的" );
             }
             if (!Checked.judge()) {
                 //保存信息
